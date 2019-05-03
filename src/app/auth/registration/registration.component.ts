@@ -27,7 +27,6 @@ export class RegistrationComponent implements OnInit {
       'agree': new FormControl(false, [Validators.requiredTrue])
     });
   }
-
   onSubmit() {
     const {email, password, name} = this.form.value;
     const user = new User(email, password, name);
