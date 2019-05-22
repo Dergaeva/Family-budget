@@ -38,6 +38,11 @@
       "id": 3,
       "name": "Машина",
       "capacity": 7000
+    },
+    {
+      "name": "Cвежак",
+      "capacity": 1234,
+      "id": 4
     }
   ],
   "events": [
