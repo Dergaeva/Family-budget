@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
-import {User} from "../../../../shared/models/user.model";
-import {AuthService} from "../../../../shared/services/auth.service";
+import {User} from '../../../../shared/models/user.model';
+import {AuthService} from '../../../../shared/services/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -10,11 +10,11 @@ import {AuthService} from "../../../../shared/services/auth.service";
 })
 export class HeaderComponent implements OnInit {
 
-  date:Date = new Date;
-  user:User;
+  date: Date = new Date;
+  user: User;
 
-  constructor(private authService:AuthService,
-              private router:Router) {
+  constructor(private authService: AuthService,
+              private router: Router) {
   }
 
   ngOnInit() {

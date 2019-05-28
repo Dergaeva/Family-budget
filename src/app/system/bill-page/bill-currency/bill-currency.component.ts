@@ -8,6 +8,6 @@ import { Component, Input } from '@angular/core';
 export class BillCurrencyComponent {
 
   @Input() currency: any;
-  currencies: string[] = ['USD', 'RUB']
+  currencies: string[] = ['USD', 'RUB'];
 
 }

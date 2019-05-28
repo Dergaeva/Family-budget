@@ -2,8 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {FormGroup, FormControl, Validators} from '@angular/forms';
 
-import {UserService} from "../../shared/services/users.service";
-import {User} from "../../shared/models/user.model";
+import {UserService} from '../../shared/services/users.service';
+import {User} from '../../shared/models/user.model';
 
 @Component({
   selector: 'app-registration',
@@ -11,10 +11,10 @@ import {User} from "../../shared/models/user.model";
   styleUrls: ['./registration.component.scss']
 })
 export class RegistrationComponent implements OnInit {
-  form:FormGroup;
+  form: FormGroup;
 
   constructor(
-    private userService:UserService,
+    private userService: UserService,
     private router: Router
   ) {
   }
@@ -27,6 +27,7 @@ export class RegistrationComponent implements OnInit {
       'agree': new FormControl(false, [Validators.requiredTrue])
     });
   }
+
   onSubmit() {
     const {email, password, name} = this.form.value;
     const user = new User(email, password, name);
@@ -37,23 +38,23 @@ export class RegistrationComponent implements OnInit {
             queryParams: {
               nowCanLogin: true
             }
-          })
+          });
         }
-      )
+      );
   }
 
   forbiddenEmails(control: FormControl): Promise<any> {
     return new Promise((resolve, reject) => {
       this.userService.getUserbyEmail(control.value)
-        .subscribe((user: User)=> {
-          if(user) {
+        .subscribe((user: User) => {
+          if (user) {
             resolve({forbiddenEmail: true});
-          }else{
+          } else {
             resolve(null);
           }
-        })
+        });
 
-    })
+    });
   }
 
 }
