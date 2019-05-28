@@ -11,13 +11,14 @@ import {Category} from '../../shared/models/category.model';
 })
 export class AddCategoryComponent {
 
-  @Output() onCategoryAdd = new EventEmitter<Category>();
+  @Output() categoryAdd = new EventEmitter<Category>();
 
   constructor(private categoriesService: CategoriesService) {
   }
 
   onSubmit(form: NgForm) {
-    const { name, capacity} = form.value;
+    let name: any, capacity: any;
+    ({name, capacity} = form.value);
     if (capacity < 0) {
       capacity *= -1;
     }
@@ -25,10 +26,10 @@ export class AddCategoryComponent {
     const category = new Category(name, capacity);
 
     this.categoriesService.addCategory(category)
-      .subscribe((category: Category) => {
+      .subscribe((c: Category) => {
         form.reset();
         form.form.patchValue({capacity: 1});
-        this.onCategoryAdd.emit(category);
+        this.categoryAdd.emit(c);
       });
 
   }

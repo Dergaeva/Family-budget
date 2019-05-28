@@ -23,8 +23,9 @@ export class AddEventComponent implements OnInit {
   ngOnInit() {
   }
   onSubmit(form: NgForm) {
-    const {amount, description, category, type} = form.value;
-    if (amount < 0) amount *= -1;
+    let amount: any, description: any, category: any, type: any;
+    ({amount, description, category, type} = form.value);
+    if (amount < 0) { amount *= -1; }
 
     const event = new APPEvent(
       type, amount, +category,

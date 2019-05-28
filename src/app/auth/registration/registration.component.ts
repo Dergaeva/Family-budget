@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {FormGroup, FormControl, Validators} from '@angular/forms';
+import 'rxjs/add/operator/toPromise';
 
 import {UserService} from '../../shared/services/users.service';
 import {User} from '../../shared/models/user.model';
@@ -44,17 +45,15 @@ export class RegistrationComponent implements OnInit {
   }
 
   forbiddenEmails(control: FormControl): Promise<any> {
-    return new Promise((resolve, reject) => {
-      this.userService.getUserbyEmail(control.value)
-        .subscribe((user: User) => {
-          if (user) {
-            resolve({forbiddenEmail: true});
-          } else {
-            resolve(null);
-          }
-        });
-
-    });
+    return this.userService.getUserbyEmail(control.value)
+      .toPromise()
+      .then((user: User) => {
+        if (user) {
+          return {forbiddenEmail: true};
+        } else {
+          return null;
+        }
+      });
   }
 
 }

@@ -17,6 +17,12 @@
       "password": "12345678",
       "name": "Елена",
       "id": 3
+    },
+    {
+      "email": "ffghfgh@ff.com",
+      "password": "111111",
+      "name": "Fox",
+      "id": 4
     }
   ],
   "bill": {
@@ -43,6 +49,31 @@
       "name": "Cвежак",
       "capacity": 1234,
       "id": 4
+    },
+    {
+      "name": "Обед на работе",
+      "capacity": 2000,
+      "id": 5
+    },
+    {
+      "name": "Обед на работе",
+      "capacity": 1000,
+      "id": 6
+    },
+    {
+      "name": "Обед",
+      "capacity": 2000,
+      "id": 7
+    },
+    {
+      "name": "Фитнес",
+      "capacity": 500,
+      "id": 8
+    },
+    {
+      "name": "Путешествия",
+      "capacity": 50000,
+      "id": 9
     }
   ],
   "events": [
