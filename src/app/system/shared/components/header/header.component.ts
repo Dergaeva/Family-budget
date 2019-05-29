@@ -13,7 +13,6 @@ export class HeaderComponent implements OnDestroy {
   date: Date = new Date;
   currentUser: User;
   currentUserSubscription: Subscription;
-
   constructor(private authService: AuthService) {
     // this.currentUserSubscription = this.authService.user.subscribe(user => {
     //   this.currentUser = user;
