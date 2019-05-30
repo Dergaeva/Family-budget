@@ -13,14 +13,14 @@ export class HeaderComponent implements OnDestroy {
   date: Date = new Date;
   currentUser: User;
   currentUserSubscription: Subscription;
+
   constructor(private authService: AuthService) {
-    // this.currentUserSubscription = this.authService.user.subscribe(user => {
-    //   this.currentUser = user;
-    // });
+    this.currentUserSubscription = this.authService.currentUser.subscribe(user => {
+      this.currentUser = user;
+    });
   }
 
   ngOnDestroy() {
-    // unsubscribe to ensure no memory leaks
     this.currentUserSubscription.unsubscribe();
   }
 
