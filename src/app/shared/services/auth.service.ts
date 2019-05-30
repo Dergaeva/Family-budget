@@ -11,7 +11,7 @@ export class AuthService {
   public currentUser: Observable<User>;
 
   constructor(private router: Router) {
-    this.currentUserSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('user')));
+    this.currentUserSubject = new BehaviorSubject<User>(JSON.parse(window.localStorage.getItem('user')));
     this.currentUser = this.currentUserSubject.asObservable();
   }
 
@@ -26,7 +26,7 @@ export class AuthService {
 
   logout() {
     this.isAuthenticated = false;
-    localStorage.clear();
+    window.localStorage.clear();
     this.currentUserSubject.next(null);
     this.router.navigate(['/login']);
   }

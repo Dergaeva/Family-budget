@@ -3,6 +3,7 @@ import {NgForm} from '@angular/forms';
 import {Category} from '../../shared/models/category.model';
 import {CategoriesService} from '../../shared/services/categories.service';
 import {Message} from '../../../shared/models/message.model';
+import {Subscription} from "rxjs/index";
 
 
 @Component({
@@ -11,6 +12,8 @@ import {Message} from '../../../shared/models/message.model';
   styleUrls: ['./edit-category.component.scss']
 })
 export class EditCategoryComponent implements OnInit {
+
+  sub1:Subscription;
 
   @Input() categories: Category[] = [];
   @Output() categoryEdit = new EventEmitter<Category>();
@@ -49,15 +52,18 @@ export class EditCategoryComponent implements OnInit {
 
     const category = new Category(name, capacity, +this.currentCategoryId);
 
-    this.categoriesService.updateCategory(category)
-    // tslint:disable-next-line:no-shadowed-variable
-      .subscribe((category: Category) => {
-        this.categoryEdit.emit(category);
+    this.sub1 = this.categoriesService.updateCategory(category)
+      .subscribe((c: Category) => {
+        this.categoryEdit.emit(c);
         this.message.text = 'Категория успешно отредактирована';
         window.setTimeout(() => this.message.text = '', 5000);
 
       });
 
+  }
+
+  ngOnDestroy() {
+    if (this.sub1) this.sub1.unsubscribe();
   }
 
 }

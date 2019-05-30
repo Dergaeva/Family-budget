@@ -7,7 +7,7 @@ import {AuthModule} from './auth/auth.module';
 import {AppRoutingModule} from './app-routing.module';
 import {UserService} from './shared/services/users.service';
 import {AuthService} from './shared/services/auth.service';
-import {SystemModule} from './system/system.module';
+import {AuthGuard} from "./shared/services/auth.guard";
 
 
 @NgModule({
@@ -18,10 +18,9 @@ import {SystemModule} from './system/system.module';
     BrowserModule,
     AuthModule,
     AppRoutingModule,
-    HttpClientModule,
-    SystemModule
+    HttpClientModule
   ],
-  providers: [UserService, AuthService],
+  providers: [UserService, AuthService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule {
