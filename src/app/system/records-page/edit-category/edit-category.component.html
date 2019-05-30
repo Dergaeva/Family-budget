@@ -43,11 +43,12 @@
           name="name"
           [ngModel]="currentCategory.name"
         >
-        <span
-          *ngIf="name.invalid && name.touched"
-          class="form-help-text"
-        >
-          Название категории не может быть пустым.</span>
+        <span class="form-help-text" *ngFor="let validation of edit_category_validation_messages.name">
+          <span
+            *ngIf="name.invalid && name.touched">
+            {{validation.message}}
+          </span>
+        </span>
       </div>
       <div
         class="form-group"
@@ -64,11 +65,11 @@
           required
           min="1"
         >
-        <span
-          *ngIf="capacity.invalid && capacity.touched"
-          class="form-help-text"
-        >
-          Поле не может быть пустым
+        <span class="form-help-text" *ngFor="let validation of edit_category_validation_messages.capacity">
+          <span
+            *ngIf="capacity.invalid && capacity.touched">
+            {{validation.message}}
+          </span>
         </span>
       </div>
       <button

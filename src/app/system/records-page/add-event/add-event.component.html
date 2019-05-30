@@ -54,11 +54,11 @@
           #amount="ngModel"
           required
         >
-        <span
-          class="form-help-text"
-          *ngIf="amount.invalid && amount.touched"
-        >
-          Поле обязательно для заполнения
+        <span class="form-help-text" *ngFor="let validation of add_event_validation_messages.amount">
+          <span
+            *ngIf="amount.invalid && amount.touched">
+            {{validation.message}}
+          </span>
         </span>
       </div>
       <div
@@ -75,11 +75,11 @@
           #description="ngModel"
           required
         >
-        <span
-          class="form-help-text"
-          *ngIf="description.invalid && description.touched"
-        >
-          Поле обязательно для заполнения
+        <span class="form-help-text" *ngFor="let validation of add_event_validation_messages.description">
+          <span
+            *ngIf="description.invalid && description.touched">
+            {{validation.message}}
+          </span>
         </span>
       </div>
       <button

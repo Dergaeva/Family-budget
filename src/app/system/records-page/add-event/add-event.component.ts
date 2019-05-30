@@ -1,9 +1,9 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import {Component, Input, OnInit} from '@angular/core';
+import {NgForm} from '@angular/forms';
 import * as moment from 'moment';
 
-import { Category } from '../../shared/models/category.model';
-import { APPEvent } from '../../shared/models/event.model';
+import {Category} from '../../shared/models/category.model';
+import {APPEvent} from '../../shared/models/event.model';
 
 @Component({
   selector: 'app-add-event',
@@ -18,14 +18,23 @@ export class AddEventComponent implements OnInit {
     {type: 'outcome', label: 'Расход'}
   ];
 
-  constructor() { }
+  add_event_validation_messages = {
+    'amount': [{type: 'required', message: 'Поле не может быть пустым.'}],
+    'description': [{type: 'required', message: 'Поле не может быть пустым'}]
+  };
+
+  constructor() {
+  }
 
   ngOnInit() {
   }
+
   onSubmit(form: NgForm) {
     let amount: any, description: any, category: any, type: any;
     ({amount, description, category, type} = form.value);
-    if (amount < 0) { amount *= -1; }
+    if (amount < 0) {
+      amount *= -1;
+    }
 
     const event = new APPEvent(
       type, amount, +category,

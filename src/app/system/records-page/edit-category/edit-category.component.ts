@@ -20,6 +20,11 @@ export class EditCategoryComponent implements OnInit {
   currentCategory: Category;
   message: Message;
 
+  edit_category_validation_messages = {
+    'name': [{type: 'required', message: 'Название категории не может быть пустым.'}],
+    'capacity': [{type: 'required', message: 'Поле не может быть пустым'}]
+  };
+
 
   constructor(private categoriesService: CategoriesService) {
   }

@@ -13,8 +13,18 @@ export class AddCategoryComponent {
 
   @Output() categoryAdd = new EventEmitter<Category>();
 
+  add_category_validation_messages = {
+    'name': [
+      {type: 'required', message: 'Название категории не может быть пустым.'}
+    ],
+    'capacity': [
+      {type: 'required', message: 'Поле не может быть пустым'}
+    ]
+  };
+
   constructor(private categoriesService: CategoriesService) {
   }
+
 
   onSubmit(form: NgForm) {
     let name: any, capacity: any;
