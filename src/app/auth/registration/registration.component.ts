@@ -20,11 +20,27 @@ export class RegistrationComponent implements OnInit {
   ) {
   }
 
+  registration_validation_messages = {
+    'email': [
+      {type: 'required', message: 'Email не может быть пустым.'},
+      {type: 'email', message: 'Введите корректный email.'},
+      {type: 'forbiddenEmail', message: 'Email уже занят.'}
+    ],
+    'password': [
+      {type: 'required', message: 'Пароль не может быть пустым.'},
+      {type: 'minlength', message: 'Пароль должен быть меньше 5 сиволов.'}
+    ],
+    'name': [
+      {type: 'required', message: 'Имя не может быть пустым.'},
+      {type: 'minlength', message: 'Имя не должно быть меньше 3 сиволов.'}
+    ]
+  };
+
   ngOnInit() {
     this.form = new FormGroup({
       'email': new FormControl(null, [Validators.required, Validators.email], this.forbiddenEmails.bind(this)),
       'password': new FormControl(null, [Validators.required, Validators.minLength(6)]),
-      'name': new FormControl(null, [Validators.required]),
+      'name': new FormControl(null, [Validators.required, Validators.minLength(4)]),
       'agree': new FormControl(false, [Validators.requiredTrue])
     });
   }

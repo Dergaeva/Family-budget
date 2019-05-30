@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {FormGroup, FormControl, Validators} from '@angular/forms';
 import {ActivatedRoute, Params, Router} from '@angular/router';
 
@@ -16,8 +16,20 @@ import {AuthService} from '../../shared/services/auth.service';
 })
 export class LoginComponent implements OnInit {
 
+
   form: FormGroup;
   message: Message;
+
+  account_validation_messages = {
+    'email': [
+      {type: 'required', message: 'Email не может быть пустым.'},
+      {type: 'email', message: 'Введите корректный email'}
+    ],
+    'password': [
+      {type: 'required', message: 'Пароль не может быть пустым.'},
+      {type: 'minlength', message: 'Пароль должен быть больше 5 сиволов '}
+    ]
+  };
 
   constructor(private userService: UserService,
               private authService: AuthService,
