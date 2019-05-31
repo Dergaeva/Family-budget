@@ -11,6 +11,12 @@
       "password": "12345678",
       "name": "Елена",
       "id": 2
+    },
+    {
+      "email": "lena_dreames@mail.ru",
+      "password": "111111",
+      "name": "Fox1",
+      "id": 3
     }
   ],
   "bill": {
@@ -32,8 +38,17 @@
       "id": 3,
       "name": "Машина",
       "capacity": 7000
+    },
+    {
+      "name": "Категория2",
+      "capacity": 1,
+      "id": 4
+    },
+    {
+      "name": "Категория1",
+      "capacity": 5000,
+      "id": 5
     }
-
   ],
   "events": [
     {

@@ -6,11 +6,10 @@ import {BillPageComponent} from './bill-page/bill-page.component';
 import {HistoryPageComponent} from './history-page/history-page.component';
 import {PlanningPageComponent} from './planning-page/planning-page.component';
 import {RecordsPageComponent} from './records-page/records-page.component';
-import {AuthGuard} from "../shared/services/auth.guard";
+import {AuthGuard} from '../shared/services/auth.guard';
 
 
-
-const routes:Routes = [
+const routes: Routes = [
   {
     path: '', component: SystemComponent, canActivate: [AuthGuard], children: [
       {path: 'bill', component: BillPageComponent},

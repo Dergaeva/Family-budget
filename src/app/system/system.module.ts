@@ -20,7 +20,8 @@ import {AddEventComponent} from './records-page/add-event/add-event.component';
 import {AddCategoryComponent} from './records-page/add-category/add-category.component';
 import {EditCategoryComponent} from './records-page/edit-category/edit-category.component';
 import {CategoriesService} from './shared/services/categories.service';
-import {EventsService} from "./shared/services/events.service";
+import {EventsService} from './shared/services/events.service';
+import { ModalComponent } from './shared/components/modal/modal.component';
 
 @NgModule({
   imports: [
@@ -42,7 +43,8 @@ import {EventsService} from "./shared/services/events.service";
     MomentPipe,
     AddEventComponent,
     AddCategoryComponent,
-    EditCategoryComponent
+    EditCategoryComponent,
+    ModalComponent
 
   ],
   providers: [BillService, CategoriesService, EventsService]

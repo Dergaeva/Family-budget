@@ -1,31 +1,30 @@
-import {Component, OnDestroy} from '@angular/core';
+import {Component, Input, OnInit, Output} from '@angular/core';
+import {Router} from '@angular/router';
 import {AuthService} from '../../../../shared/services/auth.service';
 import {User} from '../../../../shared/models/user.model';
-import {Subscription} from 'rxjs';
+
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
-export class HeaderComponent implements OnDestroy {
+export class HeaderComponent implements OnInit {
 
   date: Date = new Date;
-  currentUser: User;
-  currentUserSubscription: Subscription;
+  @Input()user: User;
 
-  constructor(private authService: AuthService) {
-    this.currentUserSubscription = this.authService.currentUser.subscribe(user => {
-      this.currentUser = user;
-    });
+  constructor(private authService: AuthService,
+              private router: Router) {
   }
 
-  ngOnDestroy() {
-    this.currentUserSubscription.unsubscribe();
+  ngOnInit() {
+    this.user = JSON.parse(window.localStorage.getItem('user'));
   }
 
   onLogout() {
     this.authService.logout();
+    this.router.navigate(['/login']);
   }
 
 }

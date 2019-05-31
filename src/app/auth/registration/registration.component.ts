@@ -32,7 +32,7 @@ export class RegistrationComponent implements OnInit {
     ],
     'name': [
       {type: 'required', message: 'Имя не может быть пустым.'},
-      {type: 'minlength', message: 'Имя не должно быть меньше 3 сиволов.'}
+      {type: 'minlength', message: 'Имя не должно быть меньше 2 сиволов.'}
     ]
   };
 
@@ -40,7 +40,7 @@ export class RegistrationComponent implements OnInit {
     this.form = new FormGroup({
       'email': new FormControl(null, [Validators.required, Validators.email], this.forbiddenEmails.bind(this)),
       'password': new FormControl(null, [Validators.required, Validators.minLength(6)]),
-      'name': new FormControl(null, [Validators.required, Validators.minLength(4)]),
+      'name': new FormControl(null, [Validators.required, Validators.minLength(2)]),
       'agree': new FormControl(false, [Validators.requiredTrue])
     });
   }
