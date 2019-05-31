@@ -20,7 +20,7 @@
     }
   ],
   "bill": {
-    "value": 1000000220,
+    "value": 1000000219,
     "currency": "RUB"
   },
   "categories": [
@@ -40,14 +40,49 @@
       "capacity": 7000
     },
     {
-      "name": "Категория2",
+      "name": "Новая",
       "capacity": 1,
       "id": 4
     },
     {
-      "name": "Категория1",
-      "capacity": 5000,
+      "name": "Фитнес",
+      "capacity": 1,
       "id": 5
+    },
+    {
+      "name": "Новая",
+      "capacity": 1,
+      "id": 6
+    },
+    {
+      "name": "Fox",
+      "capacity": 1,
+      "id": 7
+    },
+    {
+      "name": "dfdsf",
+      "capacity": 1,
+      "id": 8
+    },
+    {
+      "name": "Новая",
+      "capacity": 1,
+      "id": 9
+    },
+    {
+      "name": "55555",
+      "capacity": 1,
+      "id": 10
+    },
+    {
+      "name": "44",
+      "capacity": 1,
+      "id": 11
+    },
+    {
+      "name": "12",
+      "capacity": 1,
+      "id": 12
     }
   ],
   "events": [
@@ -98,6 +133,14 @@
       "date": "31.05.2019 00:43:41",
       "description": "test",
       "id": 6
+    },
+    {
+      "type": "outcome",
+      "amount": 1,
+      "category": 5,
+      "date": "31.05.2019 19:23:17",
+      "description": "ddf",
+      "id": 7
     }
   ]
 }

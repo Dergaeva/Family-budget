@@ -20,11 +20,13 @@ export class RecordsPageComponent implements OnInit {
       .subscribe((categories: Category[]) => {
         this.categories = categories;
         this.isLoaded = true;
+        console.log('1', this.categories);
       });
   }
 
   newCategoryAdded(category: Category) {
-    this.categories.push(category);
+    // this.categories.push(category);
+     this.categories = [...this.categories, category];
   }
 
   categoryWasEdited(category: Category) {

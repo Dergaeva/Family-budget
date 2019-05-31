@@ -1,4 +1,4 @@
-import { Injectable, OnInit, Output } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {User} from '../models/user.model';
 
 @Injectable()

@@ -12,12 +12,12 @@ import {Subscription} from 'rxjs/index';
 })
 export class AddCategoryComponent implements OnDestroy {
 
-  sub1: Subscription;
+  private sub1: Subscription;
 
 
   @Output() categoryAdd = new EventEmitter<Category>();
 
-  add_category_validation_messages = {
+  private add_category_validation_messages = {
     'name': [
       {type: 'required', message: 'Название категории не может быть пустым.'}
     ],
