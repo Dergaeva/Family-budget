@@ -1,55 +1,57 @@
-<p class="text-xs-center">Войдите для работы</p>
-<div
-  class="alert alert-{{message.type}}"
-  *ngIf="message.text"
->
-  {{message.text}}
-</div>
-<form [formGroup]="form" (ngSubmit)="onSubmit()">
+<app-auth-container>
+  <p class="text-xs-center">Войдите для работы</p>
   <div
-    class="form-group"
-    [ngClass]="{'has-error': form.get('email').invalid && form.get('email').touched}"
+    class="alert alert-{{message.type}}"
+    *ngIf="message.text"
   >
-    <label for="email">Email</label>
-    <input
-      type="text"
-      class="form-control underlined"
-      id="email"
-      placeholder="Введите ваш email"
-      formControlName="email"
+    {{message.text}}
+  </div>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div
+      class="form-group"
+      [ngClass]="{'has-error': form.get('email').invalid && form.get('email').touched}"
     >
-    <span class="form-help-text" *ngFor="let validation of account_validation_messages.email">
+      <label for="email">Email</label>
+      <input
+        type="text"
+        class="form-control underlined"
+        id="email"
+        placeholder="Введите ваш email"
+        formControlName="email"
+      >
+      <span class="form-help-text" *ngFor="let validation of account_validation_messages.email">
       <span
         *ngIf="form.get('email').hasError(validation.type) && (form.get('email').dirty || form.get('email').touched)">
         {{validation.message}}
       </span>
     </span>
-  </div>
-  <div
-    class="form-group"
-    [ngClass]="{'has-error': form.get('password').invalid && form.get('password').touched}"
-  >
-    <label for="password">Пароль</label>
-    <input
-      type="password"
-      class="form-control underlined"
-      id="password"
-      placeholder="Пароль"
-      formControlName="password"
+    </div>
+    <div
+      class="form-group"
+      [ngClass]="{'has-error': form.get('password').invalid && form.get('password').touched}"
     >
-    <span class="form-help-text" *ngFor="let validation of account_validation_messages.password">
+      <label for="password">Пароль</label>
+      <input
+        type="password"
+        class="form-control underlined"
+        id="password"
+        placeholder="Пароль"
+        formControlName="password"
+      >
+      <span class="form-help-text" *ngFor="let validation of account_validation_messages.password">
       <span
         *ngIf="form.get('password').hasError(validation.type) && (form.get('password').dirty || form.get('password').touched)">
         {{validation.message}}
       </span>
     </span>
-  </div>
-  <div class="form-group">
-    <button type="submit" [disabled]="form.invalid" class="btn btn-block btn-primary">Войти</button>
-  </div>
-  <div class="form-group">
-    <p class="text-muted text-xs-center">
-      Нет аккаунта? <a [routerLink]="'/registration'">Зарегистрироваться!</a>
-    </p>
-  </div>
-</form>
+    </div>
+    <div class="form-group">
+      <button type="submit" [disabled]="form.invalid" class="btn btn-block btn-primary">Войти</button>
+    </div>
+    <div class="form-group">
+      <p class="text-muted text-xs-center">
+        Нет аккаунта? <a [routerLink]="'/registration'">Зарегистрироваться!</a>
+      </p>
+    </div>
+  </form>
+</app-auth-container>

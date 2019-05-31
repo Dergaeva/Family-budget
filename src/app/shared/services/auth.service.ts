@@ -1,24 +1,25 @@
-import {OnInit, Output} from '@angular/core';
+import { Injectable, OnInit, Output } from '@angular/core';
 import {User} from '../models/user.model';
 
-export class AuthService implements OnInit {
-  private isAuthenticated = false;
-  @Output() user: User;
+@Injectable()
+export class AuthService {
+  public user: User;
 
-  ngOnInit() {
+  public get isLoggedIn(): boolean {
+    return !!this.user;
+  }
+
+  constructor() {
     this.user = JSON.parse(window.localStorage.getItem('user'));
   }
 
-  login() {
-    this.isAuthenticated = true;
+  login(user: User): void {
+    this.user = user;
+    window.localStorage.setItem('user', JSON.stringify(user));
   }
 
   logout() {
-    this.isAuthenticated = false;
     window.localStorage.clear();
-  }
-
-  isLoggedIn(): boolean {
-    return this.isAuthenticated;
+    this.user = null;
   }
 }
