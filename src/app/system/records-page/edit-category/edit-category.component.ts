@@ -34,10 +34,11 @@ export class EditCategoryComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.message = new Message('success', '');
-    this.onCategoryChange();
+    this.categoryChange();
   }
 
-  onCategoryChange() {
+
+  categoryChange() {
     this.currentCategory = this.categories
       .find(c => c.id === +this.currentCategoryId);
 

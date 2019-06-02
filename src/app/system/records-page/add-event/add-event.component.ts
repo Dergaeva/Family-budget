@@ -29,7 +29,7 @@ export class AddEventComponent implements OnInit, OnDestroy {
 
   message: Message;
 
-  add_event_validation_messages = {
+  private add_event_validation_messages = {
     'amount': [{type: 'required', message: 'Поле не может быть пустым.'}],
     'description': [{type: 'required', message: 'Поле не может быть пустым'}]
   };

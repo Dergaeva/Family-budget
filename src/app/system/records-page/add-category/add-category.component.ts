@@ -27,6 +27,7 @@ export class AddCategoryComponent implements OnDestroy {
   };
 
   constructor(private categoriesService: CategoriesService) {
+
   }
 
 

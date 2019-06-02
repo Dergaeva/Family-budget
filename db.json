@@ -20,7 +20,7 @@
     }
   ],
   "bill": {
-    "value": 1000000219,
+    "value": 976600,
     "currency": "RUB"
   },
   "categories": [
@@ -35,54 +35,14 @@
       "id": 2
     },
     {
-      "id": 3,
       "name": "Машина",
-      "capacity": 7000
-    },
-    {
-      "name": "Новая",
-      "capacity": 1,
-      "id": 4
+      "capacity": 15000,
+      "id": 3
     },
     {
       "name": "Фитнес",
-      "capacity": 1,
-      "id": 5
-    },
-    {
-      "name": "Новая",
-      "capacity": 1,
-      "id": 6
-    },
-    {
-      "name": "Fox",
-      "capacity": 1,
-      "id": 7
-    },
-    {
-      "name": "dfdsf",
-      "capacity": 1,
-      "id": 8
-    },
-    {
-      "name": "Новая",
-      "capacity": 1,
-      "id": 9
-    },
-    {
-      "name": "55555",
-      "capacity": 1,
-      "id": 10
-    },
-    {
-      "name": "44",
-      "capacity": 1,
-      "id": 11
-    },
-    {
-      "name": "12",
-      "capacity": 1,
-      "id": 12
+      "capacity": 1500,
+      "id": 4
     }
   ],
   "events": [
@@ -136,11 +96,43 @@
     },
     {
       "type": "outcome",
-      "amount": 1,
-      "category": 5,
-      "date": "31.05.2019 19:23:17",
-      "description": "ddf",
-      "id": 7
+      "amount": 1200,
+      "category": 3,
+      "date": "02.06.2019 16:47:58",
+      "description": "test",
+      "id": 8
+    },
+    {
+      "type": "outcome",
+      "amount": 8000,
+      "category": 3,
+      "date": "02.06.2019 16:48:27",
+      "description": "test",
+      "id": 9
+    },
+    {
+      "type": "outcome",
+      "amount": 13500,
+      "category": 1,
+      "date": "02.06.2019 16:49:41",
+      "description": "test",
+      "id": 10
+    },
+    {
+      "type": "outcome",
+      "amount": 200,
+      "category": 1,
+      "date": "02.06.2019 16:50:09",
+      "description": "test",
+      "id": 11
+    },
+    {
+      "type": "outcome",
+      "amount": 500,
+      "category": 4,
+      "date": "03.06.2019 00:33:49",
+      "description": "капоэйра",
+      "id": 12
     }
   ]
 }
