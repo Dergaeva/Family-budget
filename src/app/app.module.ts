@@ -11,7 +11,7 @@ import {UserService} from './shared/services/users.service';
 import {AuthService} from './shared/services/auth.service';
 import {AuthGuard} from './shared/services/auth.guard';
 import {GuestGuard} from './shared/services/guest.guard';
-import {NotFoundComponent} from "./shared/components/not-found/not-found.component";
+import {NotFoundComponent} from './shared/components/not-found/not-found.component';
 
 @NgModule({
   declarations: [

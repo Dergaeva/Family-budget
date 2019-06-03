@@ -1,5 +1,5 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
-import {Category} from "../../shared/models/category.model";
+import {Component, EventEmitter, Input, Output} from '@angular/core';
+import {Category} from '../../shared/models/category.model';
 
 @Component({
   selector: 'app-history-filter',
@@ -8,22 +8,22 @@ import {Category} from "../../shared/models/category.model";
 })
 export class HistoryFilterComponent {
 
-  @Output() onFilterCancel = new EventEmitter<any>();
-  @Output() onFilterApply = new EventEmitter<any>();
+  @Output() filterCancel = new EventEmitter<any>();
+  @Output() filterApply = new EventEmitter<any>();
 
   @Input() categories: Category[] = [];
 
-  selectedPeriod = 'd';
-  selectedTypes = [];
-  selectedCategories = [];
+  private selectedPeriod = 'd';
+  private selectedTypes = [];
+  private selectedCategories = [];
 
-  timePeriods = [
+  private timePeriods = [
     {type: 'd', label: 'День'},
     {type: 'w', label: 'Неделя'},
     {type: 'M', label: 'Месяц'}
   ];
 
-  types = [
+  private types = [
     {type: 'income', label: 'Доход'},
     {type: 'outcome', label: 'Расход'}
   ];
@@ -32,7 +32,7 @@ export class HistoryFilterComponent {
     this.selectedTypes = [];
     this.selectedCategories = [];
     this.selectedPeriod = 'd';
-    this.onFilterCancel.emit();
+    this.filterCancel.emit();
   }
 
   private calculateInputParams(field: string, checked: boolean, value: string) {
@@ -52,7 +52,7 @@ export class HistoryFilterComponent {
   }
 
   applyFilter() {
-    this.onFilterApply.emit({
+    this.filterApply.emit({
       types: this.selectedTypes,
       categories: this.selectedCategories,
       period: this.selectedPeriod

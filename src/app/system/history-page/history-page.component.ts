@@ -4,7 +4,7 @@ import {EventsService} from '../shared/services/events.service';
 import {Category} from '../shared/models/category.model';
 import {APPEvent} from '../shared/models/event.model';
 import {Subscription} from 'rxjs/Subscription';
-import {combineLatest} from "rxjs";
+import {combineLatest} from 'rxjs';
 
 @Component({
   selector: 'app-history-page',
@@ -13,25 +13,25 @@ import {combineLatest} from "rxjs";
 })
 export class HistoryPageComponent implements OnInit, OnDestroy {
 
-  constructor(private categoriesService:CategoriesService,
-              private eventService:EventsService) {
+  constructor(private categoriesService: CategoriesService,
+              private eventService: EventsService) {
   }
 
-  isLoaded = false;
-  s1:Subscription;
+  private isLoaded = false;
+  private sub1: Subscription;
 
-  categories:Category[] = [];
-  events:APPEvent[] = [];
+  categories: Category[] = [];
+  events: APPEvent[] = [];
 
-  chartData = [];
+  private chartData = [];
 
   private isFilterVisible = false;
 
   ngOnInit() {
-    this.s1 = combineLatest(
+    this.sub1 = combineLatest([
       this.categoriesService.getCategories(),
       this.eventService.getEvents()
-    ).subscribe((data:[Category[], APPEvent[]]) => {
+    ]).subscribe((data: [Category[], APPEvent[]]) => {
       this.categories = data[0];
       this.events = data[1];
 
@@ -41,7 +41,7 @@ export class HistoryPageComponent implements OnInit, OnDestroy {
     });
   }
 
-  calculateChartData():void {
+  private calculateChartData(): void {
     this.chartData = [];
 
     this.categories.forEach((cat) => {
@@ -56,7 +56,7 @@ export class HistoryPageComponent implements OnInit, OnDestroy {
     });
   }
 
-  private toggleFilterVisibility(dir:boolean) {
+  private toggleFilterVisibility(dir: boolean) {
     this.isFilterVisible = dir;
   }
 
@@ -64,17 +64,17 @@ export class HistoryPageComponent implements OnInit, OnDestroy {
     this.toggleFilterVisibility(true);
   }
 
-  onFilterApply(filterData) {
+  filterApply(filterData) {
     console.log(filterData);
   }
 
-  onFilterCancel() {
+  filterCancel() {
     this.toggleFilterVisibility(false);
   }
 
   ngOnDestroy() {
-    if (this.s1) {
-      this.s1.unsubscribe();
+    if (this.sub1) {
+      this.sub1.unsubscribe();
     }
   }
 

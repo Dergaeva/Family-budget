@@ -20,7 +20,7 @@
     }
   ],
   "bill": {
-    "value": 976600,
+    "value": 976720,
     "currency": "RUB"
   },
   "categories": [
@@ -43,6 +43,11 @@
       "name": "Фитнес",
       "capacity": 1500,
       "id": 4
+    },
+    {
+      "name": "Бали",
+      "capacity": 1000,
+      "id": 5
     }
   ],
   "events": [
@@ -133,6 +138,14 @@
       "date": "03.06.2019 00:33:49",
       "description": "капоэйра",
       "id": 12
+    },
+    {
+      "type": "income",
+      "amount": 120,
+      "category": 5,
+      "date": "03.06.2019 11:00:35",
+      "description": "test",
+      "id": 13
     }
   ]
 }

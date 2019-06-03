@@ -1,11 +1,11 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
+import {Component, OnDestroy, OnInit} from '@angular/core';
+import {ActivatedRoute, Params} from '@angular/router';
 
-import {APPEvent} from "../../shared/models/event.model";
-import {Category} from "../../shared/models/category.model";
-import {Subscription} from "rxjs/index";
-import {EventsService} from "../../shared/services/events.service";
-import {CategoriesService} from "../../shared/services/categories.service";
+import {APPEvent} from '../../shared/models/event.model';
+import {Category} from '../../shared/models/category.model';
+import {Subscription} from 'rxjs';
+import {EventsService} from '../../shared/services/events.service';
+import {CategoriesService} from '../../shared/services/categories.service';
 
 @Component({
   selector: 'app-history-detail',
@@ -17,8 +17,8 @@ export class HistoryDetailComponent implements OnInit, OnDestroy {
   event: APPEvent;
   category: Category;
 
-  isLoaded = false;
-  s1: Subscription;
+  private isLoaded = false;
+  private sub1: Subscription;
 
   constructor(private route: ActivatedRoute,
               private eventsService: EventsService,
@@ -26,7 +26,7 @@ export class HistoryDetailComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.s1 = this.route.params
+    this.sub1 = this.route.params
       .mergeMap((params: Params) => this.eventsService.getEventById(params['id']))
       .mergeMap((event: APPEvent) => {
         this.event = event;
@@ -39,8 +39,8 @@ export class HistoryDetailComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    if (this.s1) {
-      this.s1.unsubscribe();
+    if (this.sub1) {
+      this.sub1.unsubscribe();
     }
   }
 

@@ -1,13 +1,13 @@
 import {Component, OnInit, OnDestroy} from '@angular/core';
-import {BillService} from "../shared/services/bill.service";
-import {CategoriesService} from "../shared/services/categories.service";
-import {EventsService} from "../shared/services/events.service";
-import {Subscription} from "rxjs/index";
-import {Bill} from "../shared/models/bill.model";
-import {Category} from "../shared/models/category.model";
+import {BillService} from '../shared/services/bill.service';
+import {CategoriesService} from '../shared/services/categories.service';
+import {EventsService} from '../shared/services/events.service';
+import {Subscription} from 'rxjs';
+import {Bill} from '../shared/models/bill.model';
+import {Category} from '../shared/models/category.model';
 
 import {combineLatest} from 'rxjs';
-import {APPEvent} from "../shared/models/event.model";
+import {APPEvent} from '../shared/models/event.model';
 
 
 @Component({
@@ -17,34 +17,34 @@ import {APPEvent} from "../shared/models/event.model";
 })
 export class PlanningPageComponent implements OnInit, OnDestroy {
 
-  isLoaded = false;
-  sub1:Subscription;
+  private isLoaded = false;
+  private sub1: Subscription;
 
-  bill:Bill;
-  categories:Category[] = [];
+  bill: Bill;
+  categories: Category[] = [];
   events: APPEvent[] = [];
 
-  constructor(private billService:BillService,
-              private categoriesService:CategoriesService,
-              private eventsService:EventsService) {
+  constructor(private billService: BillService,
+              private categoriesService: CategoriesService,
+              private eventsService: EventsService) {
 
   }
 
   ngOnInit() {
-    this.sub1 = combineLatest(
+    this.sub1 = combineLatest([
       this.billService.getBill(),
       this.categoriesService.getCategories(),
       this.eventsService.getEvents()
-    ).subscribe((data:[Bill, Category[], APPEvent[]])=> {
+    ]).subscribe((data: [Bill, Category[], APPEvent[]]) => {
       this.bill = data[0];
       this.categories = data[1];
       this.events = data[2];
 
       this.isLoaded = true;
-    })
+    });
   }
 
-  getCategoryCost(cat:Category):number {
+  private getCategoryCost(cat: Category): number {
     const catEvents = this.events.filter(e => e.category === cat.id && e.type === 'outcome');
     return catEvents.reduce((total, e) => {
       total += e.amount;
@@ -52,18 +52,18 @@ export class PlanningPageComponent implements OnInit, OnDestroy {
     }, 0);
   }
 
-  private getPercent(cat:Category):number {
+  private getPercent(cat: Category): number {
     const percent = (100 * this.getCategoryCost(cat)) / cat.capacity;
-    return percent > 100 ? 100: percent;
+    return percent > 100 ? 100 : percent;
   }
 
-  getCatPercent(cat: Category): string {
-    return this.getPercent(cat) + '%'
+  private getCatPercent(cat: Category): string {
+    return this.getPercent(cat) + '%';
   }
 
-  getCatColorClass(cat:Category):string {
+  private getCatColorClass(cat: Category): string {
     const percent = this.getPercent(cat);
-    return percent < 60 ? 'success' : percent >=100 ? 'danger' : 'warning';
+    return percent < 60 ? 'success' : percent >= 100 ? 'danger' : 'warning';
 
   }
 

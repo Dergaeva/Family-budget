@@ -20,8 +20,8 @@
 
   <div *ngIf="isFilterVisible">
     <app-history-filter
-      (onFilterApply)="onFilterApply($event)"
-      (onFilterCancel)="onFilterCancel()"
+      (filterApply)="filterApply($event)"
+      (filterCancel)="filterCancel()"
       [categories]="categories"
     ></app-history-filter>
   </div>
