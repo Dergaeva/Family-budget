@@ -3,7 +3,7 @@
     Страница истории <span class="sparkline bar"></span>
   </h3>
   <div class="pull-right">
-    <button class="btn-sm btn btn-primary-outline" (click)="openFilter()">
+    <button class="btn-sm btn btn-primary-outline" (click)="open()">
       <i class="fa fa-filter"></i>
     </button>
   </div>
@@ -18,12 +18,13 @@
     [events]="events"
   ></app-history-events>
 
-  <div *ngIf="isFilterVisible">
+  <app-modal header="Фильтр">
     <app-history-filter
       (filterApply)="filterApply($event)"
       (filterCancel)="filterCancel()"
       [categories]="categories"
     ></app-history-filter>
-  </div>
+</app-modal>
+
 </div>
 

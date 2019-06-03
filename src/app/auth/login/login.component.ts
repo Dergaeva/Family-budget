@@ -20,7 +20,7 @@ export class LoginComponent implements OnInit {
   form: FormGroup;
   message: Message;
 
-  account_validation_messages = {
+  private account_validation_messages = {
     'email': [
       {type: 'required', message: 'Email не может быть пустым.'},
       {type: 'email', message: 'Введите корректный email'}

@@ -25,6 +25,7 @@ import { HistoryChartComponent } from './history-page/history-chart/history-char
 import { HistoryEventsComponent } from './history-page/history-events/history-events.component';
 import { HistoryDetailComponent } from './history-page/history-detail/history-detail.component';
 import { HistoryFilterComponent } from './history-page/history-filter/history-filter.component';
+import { ModalComponent } from './shared/components/modal/modal.component';
 
 @NgModule({
   imports: [
@@ -50,10 +51,15 @@ import { HistoryFilterComponent } from './history-page/history-filter/history-fi
     HistoryChartComponent,
     HistoryEventsComponent,
     HistoryDetailComponent,
-    HistoryFilterComponent
+    HistoryFilterComponent,
+    ModalComponent
 
   ],
-  providers: [BillService, CategoriesService, EventsService]
+  providers: [BillService, CategoriesService, EventsService],
+  entryComponents: [
+    HistoryFilterComponent
+  ]
+
 })
 
 export class SystemModule {

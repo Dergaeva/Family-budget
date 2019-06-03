@@ -13,6 +13,7 @@ import {AuthGuard} from './shared/services/auth.guard';
 import {GuestGuard} from './shared/services/guest.guard';
 import {NotFoundComponent} from './shared/components/not-found/not-found.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,7 +28,8 @@ import {NotFoundComponent} from './shared/components/not-found/not-found.compone
     BrowserAnimationsModule
   ],
   providers: [UserService, AuthService, AuthGuard, GuestGuard],
-  bootstrap: [AppComponent],
+  bootstrap: [AppComponent]
+
 })
 export class AppModule {
 }

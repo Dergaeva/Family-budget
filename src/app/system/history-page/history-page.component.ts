@@ -1,10 +1,14 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnDestroy, OnInit, Output} from '@angular/core';
+import {Subscription} from 'rxjs/Subscription';
+import {combineLatest} from 'rxjs';
+import {NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+
 import {CategoriesService} from '../shared/services/categories.service';
 import {EventsService} from '../shared/services/events.service';
 import {Category} from '../shared/models/category.model';
 import {APPEvent} from '../shared/models/event.model';
-import {Subscription} from 'rxjs/Subscription';
-import {combineLatest} from 'rxjs';
+import {HistoryFilterComponent} from './history-filter/history-filter.component';
+
 
 @Component({
   selector: 'app-history-page',
@@ -14,7 +18,9 @@ import {combineLatest} from 'rxjs';
 export class HistoryPageComponent implements OnInit, OnDestroy {
 
   constructor(private categoriesService: CategoriesService,
-              private eventService: EventsService) {
+              private eventService: EventsService,
+              private modalService: NgbModal
+              ) {
   }
 
   private isLoaded = false;
@@ -70,6 +76,12 @@ export class HistoryPageComponent implements OnInit, OnDestroy {
 
   filterCancel() {
     this.toggleFilterVisibility(false);
+  }
+
+  open() {
+    // const modalRef = this.modalService.open(ModalComponent);
+    this.modalService.open(HistoryFilterComponent);
+    // modalRef.componentInstance.header = 'About';
   }
 
   ngOnDestroy() {
