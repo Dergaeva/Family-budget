@@ -5,4 +5,6 @@ import { Component } from '@angular/core';
   templateUrl: './system.component.html'
 })
 
-export class SystemComponent {}
+export class SystemComponent {
+
+}

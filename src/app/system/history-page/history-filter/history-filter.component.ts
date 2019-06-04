@@ -1,5 +1,6 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {Category} from '../../shared/models/category.model';
+import {NgxSmartModalService} from 'ngx-smart-modal';
 
 @Component({
   selector: 'app-history-filter',
@@ -8,7 +9,8 @@ import {Category} from '../../shared/models/category.model';
 })
 export class HistoryFilterComponent {
 
-  @Output() filterCancel = new EventEmitter<any>();
+
+  // @Output() itemModal;
   @Output() filterApply = new EventEmitter<any>();
 
   @Input() categories: Category[] = [];
@@ -16,6 +18,9 @@ export class HistoryFilterComponent {
   private selectedPeriod = 'd';
   private selectedTypes = [];
   private selectedCategories = [];
+
+  constructor(public ngxSmartModalService: NgxSmartModalService) {
+  }
 
   private timePeriods = [
     {type: 'd', label: 'День'},
@@ -28,11 +33,12 @@ export class HistoryFilterComponent {
     {type: 'outcome', label: 'Расход'}
   ];
 
+
   closeFilter() {
     this.selectedTypes = [];
     this.selectedCategories = [];
     this.selectedPeriod = 'd';
-    this.filterCancel.emit();
+    this.ngxSmartModalService.close('itemModal');
   }
 
   private calculateInputParams(field: string, checked: boolean, value: string) {

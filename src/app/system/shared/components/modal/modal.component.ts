@@ -1,20 +1,16 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
+import {Component, Input} from '@angular/core';
+import {NgxSmartModalService} from 'ngx-smart-modal';
+
 
 @Component({
   selector: 'app-modal',
   templateUrl: './modal.component.html',
   styleUrls: ['./modal.component.scss']
 })
-export class ModalComponent  implements OnInit {
+export class ModalComponent {
+  @Input() header = 'Фильтр';
 
-  @Input() title = `Заголовок`;
-
-  constructor(
-    public activeModal: NgbActiveModal
-  ) {}
-
-  ngOnInit() {
+  constructor(public ngxSmartModalService: NgxSmartModalService) {
   }
 
 }

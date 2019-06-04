@@ -1,14 +1,11 @@
-import {Component, EventEmitter, Input, OnDestroy, OnInit, Output} from '@angular/core';
-import {Subscription} from 'rxjs/Subscription';
-import {combineLatest} from 'rxjs';
-import {NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {CategoriesService} from '../shared/services/categories.service';
 import {EventsService} from '../shared/services/events.service';
 import {Category} from '../shared/models/category.model';
 import {APPEvent} from '../shared/models/event.model';
-import {HistoryFilterComponent} from './history-filter/history-filter.component';
-
+import {Subscription} from 'rxjs/Subscription';
+import {combineLatest} from 'rxjs';
+import {NgxSmartModalService} from 'ngx-smart-modal';
 
 @Component({
   selector: 'app-history-page',
@@ -17,11 +14,6 @@ import {HistoryFilterComponent} from './history-filter/history-filter.component'
 })
 export class HistoryPageComponent implements OnInit, OnDestroy {
 
-  constructor(private categoriesService: CategoriesService,
-              private eventService: EventsService,
-              private modalService: NgbModal
-              ) {
-  }
 
   private isLoaded = false;
   private sub1: Subscription;
@@ -31,7 +23,16 @@ export class HistoryPageComponent implements OnInit, OnDestroy {
 
   private chartData = [];
 
-  private isFilterVisible = false;
+
+  constructor(private categoriesService: CategoriesService,
+              private eventService: EventsService,
+              public ngxSmartModalService: NgxSmartModalService) {
+  }
+
+
+  openModalPopup() {
+    this.ngxSmartModalService.open('itemModal');
+  }
 
   ngOnInit() {
     this.sub1 = combineLatest([
@@ -62,26 +63,8 @@ export class HistoryPageComponent implements OnInit, OnDestroy {
     });
   }
 
-  private toggleFilterVisibility(dir: boolean) {
-    this.isFilterVisible = dir;
-  }
-
-  openFilter() {
-    this.toggleFilterVisibility(true);
-  }
-
   filterApply(filterData) {
     console.log(filterData);
-  }
-
-  filterCancel() {
-    this.toggleFilterVisibility(false);
-  }
-
-  open() {
-    // const modalRef = this.modalService.open(ModalComponent);
-    this.modalService.open(HistoryFilterComponent);
-    // modalRef.componentInstance.header = 'About';
   }
 
   ngOnDestroy() {
