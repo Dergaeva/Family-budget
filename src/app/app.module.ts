@@ -16,10 +16,6 @@ import {NgxSmartModalModule} from 'ngx-smart-modal';
 
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    NotFoundComponent
-  ],
   imports: [
     BrowserModule,
     AuthModule,
@@ -27,6 +23,10 @@ import {NgxSmartModalModule} from 'ngx-smart-modal';
     HttpClientModule,
     BrowserAnimationsModule,
     NgxSmartModalModule.forRoot()
+  ],
+  declarations: [
+    AppComponent,
+    NotFoundComponent
   ],
   providers: [UserService, AuthService, AuthGuard, GuestGuard],
   bootstrap: [AppComponent]
