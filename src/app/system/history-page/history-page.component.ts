@@ -30,6 +30,7 @@ export class HistoryPageComponent implements OnInit, OnDestroy {
   }
 
 
+  
   openModalPopup() {
     this.ngxSmartModalService.open('itemModal');
   }
