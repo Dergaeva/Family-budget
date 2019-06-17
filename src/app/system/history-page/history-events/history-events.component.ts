@@ -1,6 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { APPEvent } from '../../shared/models/event.model';
-import { Category } from '../../shared/models/category.model';
+import {Component, Input, OnInit} from '@angular/core';
+import {APPEvent} from '../../shared/models/event.model';
+import {Category} from '../../shared/models/category.model';
 
 @Component({
   selector: 'app-history-events',
@@ -8,10 +8,15 @@ import { Category } from '../../shared/models/category.model';
   styleUrls: ['./history-events.component.scss']
 })
 export class HistoryEventsComponent implements OnInit {
-  @Input() categories: Category[] = [];
-  @Input() events: APPEvent[] = [];
+  @Input() categories:Category[] = [];
+  @Input() events:APPEvent[] = [];
 
-  constructor() { }
+  searchValue = '';
+  searchPlaceholder = 'Сумма';
+  searchField = 'amount';
+
+  constructor() {
+  }
 
   ngOnInit() {
     this.events.forEach((e) => {
@@ -19,12 +24,23 @@ export class HistoryEventsComponent implements OnInit {
     });
   }
 
-  getEventClass(e: APPEvent) {
+  getEventClass(e:APPEvent) {
     return {
       'label': true,
       'label-danger': e.type === 'outcome',
       'label-success': e.type === 'income'
     };
+  }
+
+  changeCriteria(field:string) {
+    const namesMap = {
+      amount: 'Сумма',
+      date: 'Дата',
+      category: 'Категория',
+      type: 'Тип'
+    };
+    this.searchPlaceholder = namesMap[field];
+    this.searchField = field;
   }
 
 }

@@ -26,6 +26,7 @@ import {HistoryEventsComponent} from './history-page/history-events/history-even
 import {HistoryDetailComponent} from './history-page/history-detail/history-detail.component';
 import {HistoryFilterComponent} from './history-page/history-filter/history-filter.component';
 import {ModalComponent} from './shared/components/modal/modal.component';
+import {FilterPipe} from "./shared/pipes/filter.pipe";
 
 
 @NgModule({
@@ -54,7 +55,8 @@ import {ModalComponent} from './shared/components/modal/modal.component';
     HistoryEventsComponent,
     HistoryDetailComponent,
     HistoryFilterComponent,
-    ModalComponent
+    ModalComponent,
+    FilterPipe
   ],
   providers: [
     BillService,

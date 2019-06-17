@@ -11,37 +11,38 @@ export class HistoryFilterComponent {
 
 
   // @Output() itemModal;
-  @Output() filterApply = new EventEmitter<any>();
+  @Output() isCloseFilter = new EventEmitter<any>();
+  @Output() isApplyFilter = new EventEmitter<any>();
 
-  @Input() categories: Category[] = [];
+  @Input() categories:Category[] = [];
 
-  private selectedPeriod = 'd';
-  private selectedTypes = [];
-  private selectedCategories = [];
+  selectedPeriod = 'd';
+  selectedTypes = [];
+  selectedCategories = [];
 
-  constructor(public ngxSmartModalService: NgxSmartModalService) {
+  constructor(public ngxSmartModalService:NgxSmartModalService) {
   }
 
-  private timePeriods = [
+  timePeriods = [
     {type: 'd', label: 'День'},
     {type: 'w', label: 'Неделя'},
     {type: 'M', label: 'Месяц'}
   ];
 
-  private types = [
+   types = [
     {type: 'income', label: 'Доход'},
     {type: 'outcome', label: 'Расход'}
   ];
-
 
   closeFilter() {
     this.selectedTypes = [];
     this.selectedCategories = [];
     this.selectedPeriod = 'd';
-    this.ngxSmartModalService.close('itemModal');
+    this.isCloseFilter.emit();
   }
 
-  private calculateInputParams(field: string, checked: boolean, value: string) {
+
+  calculateInputParams(field:string, checked:boolean, value:string) {
     if (checked) {
       this[field].indexOf(value) === -1 ? this[field].push(value) : null;
     } else {
@@ -58,7 +59,7 @@ export class HistoryFilterComponent {
   }
 
   applyFilter() {
-    this.filterApply.emit({
+    this.isApplyFilter.emit({
       types: this.selectedTypes,
       categories: this.selectedCategories,
       period: this.selectedPeriod

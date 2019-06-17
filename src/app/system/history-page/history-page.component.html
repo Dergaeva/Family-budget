@@ -9,17 +9,20 @@
   </div>
 </div>
 
-<div *ngIf="!isLoaded" class="text-center">Loading ...</div>
+<div *ngIf="!isLoaded" class="text-center">
+  <app-loader></app-loader>
+</div>
 <div *ngIf="isLoaded">
   <app-history-chart [data]="chartData"></app-history-chart>
 
   <app-history-events
     [categories]="categories"
-    [events]="events"
+    [events]="filteredEvents"
   ></app-history-events>
 
   <app-history-filter
-    (filterApply)="filterApply($event)"
+    (isApplyFilter)="isApplyFilter($event)"
+    (isCloseFilter)="isCloseFilter()"
     [categories]="categories"
   ></app-history-filter>
 
