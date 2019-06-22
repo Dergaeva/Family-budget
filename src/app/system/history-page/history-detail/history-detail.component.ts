@@ -17,7 +17,7 @@ export class HistoryDetailComponent implements OnInit, OnDestroy {
   event: APPEvent;
   category: Category;
 
-  private isLoaded = false;
+  isLoaded = false;
   private sub1: Subscription;
 
   constructor(private route: ActivatedRoute,

@@ -1,6 +1,7 @@
 <app-auth-container>
   <p class="text-xs-center">Войдите для работы</p>
   <div
+    @fade
     class="alert alert-{{message.type}}"
     *ngIf="message.text"
   >

@@ -17,7 +17,7 @@ import {APPEvent} from '../shared/models/event.model';
 })
 export class PlanningPageComponent implements OnInit, OnDestroy {
 
-  private isLoaded = false;
+  isLoaded = false;
   private sub1: Subscription;
 
   bill: Bill;

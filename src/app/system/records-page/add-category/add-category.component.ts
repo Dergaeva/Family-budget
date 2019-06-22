@@ -17,7 +17,7 @@ export class AddCategoryComponent implements OnDestroy {
 
   @Output() categoryAdd = new EventEmitter<Category>();
 
-  private add_category_validation_messages = {
+  add_category_validation_messages = {
     'name': [
       {type: 'required', message: 'Название категории не может быть пустым.'}
     ],

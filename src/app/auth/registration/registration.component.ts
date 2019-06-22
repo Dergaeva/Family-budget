@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {FormGroup, FormControl, Validators} from '@angular/forms';
 import 'rxjs/add/operator/toPromise';
+import {Title} from '@angular/platform-browser';
 
 import {UserService} from '../../shared/services/users.service';
 import {User} from '../../shared/models/user.model';
@@ -12,12 +13,12 @@ import {User} from '../../shared/models/user.model';
   styleUrls: ['./registration.component.scss']
 })
 export class RegistrationComponent implements OnInit {
-  form: FormGroup;
+  form:FormGroup;
 
-  constructor(
-    private userService: UserService,
-    private router: Router
-  ) {
+  constructor(private userService:UserService,
+              private router:Router,
+              private title:Title) {
+    title.setTitle('Регистрация');
   }
 
   registration_validation_messages = {
@@ -60,10 +61,10 @@ export class RegistrationComponent implements OnInit {
       );
   }
 
-  forbiddenEmails(control: FormControl): Promise<any> {
+  forbiddenEmails(control:FormControl):Promise < any > {
     return this.userService.getUserbyEmail(control.value)
       .toPromise()
-      .then((user: User) => {
+      .then((user:User) => {
         if (user) {
           return {forbiddenEmail: true};
         } else {
